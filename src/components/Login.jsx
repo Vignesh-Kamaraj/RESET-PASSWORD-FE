@@ -6,8 +6,13 @@ import * as Yup from 'yup';
 
 function Login() {
 
+    let [email,setEmail] = useState("")
+    let [password,setPassword] = useState("")
+    let navigate = useNavigate()
+
     let validateLogin = async(e)=>{
         e.preventDefault()
+
         try {
             let res = await AxiosService.post('/login',{
                 email,
@@ -24,7 +29,6 @@ function Login() {
             toast.error(error.response.data.message || "Error Occoured! Please try after some time")
         }
     }
-    
         let validateSignUp = async()=>{
             try {
                 navigate('/signup')
@@ -55,7 +59,7 @@ function Login() {
               <h3 className="login-heading mb-4">Welcome back!</h3>
 
             {/* <!-- Sign In Form --> */}
-            <form >
+            <form>
             <div className="form-floating mb-3">
                 <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" onChange={(e)=>setEmail(e.target.value)}/>
                 <label htmlFor="floatingInput">Email address</label>
