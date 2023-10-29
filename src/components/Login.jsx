@@ -2,7 +2,15 @@ import React,{useState} from 'react'
 import AxiosService from '../common/ApiService'
 import {toast} from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import * as Yup from 'yup';
 function Login() {
+    const UserSchema = Yup.object().shape({
+       
+        email:Yup.string().email('* Invalid Email').required('* Required'),
+        password:Yup.password('* Invalid password').required('* Required'),
+
+
+      })
     let [email,setEmail] = useState("")
     let [password,setPassword] = useState("")
     let navigate = useNavigate()
@@ -54,7 +62,7 @@ function Login() {
               <h3 className="login-heading mb-4">Welcome back!</h3>
 
             {/* <!-- Sign In Form --> */}
-            <form>
+            <form validationSchema={UserSchema}>
             <div className="form-floating mb-3">
                 <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" onChange={(e)=>setEmail(e.target.value)}/>
                 <label htmlFor="floatingInput">Email address</label>
