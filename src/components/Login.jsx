@@ -2,7 +2,9 @@ import React,{useState} from 'react'
 import AxiosService from '../common/ApiService'
 import {toast} from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
-import * as Yup from 'yup';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import * as yup from 'yup';
 
 function Login() {
 
@@ -59,7 +61,7 @@ function Login() {
               <h3 className="login-heading mb-4">Welcome back!</h3>
 
             {/* <!-- Sign In Form --> */}
-            <form>
+            <Form>
             <div className="form-floating mb-3">
                 <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" onChange={(e)=>setEmail(e.target.value)}/>
                 <label htmlFor="floatingInput">Email address</label>
@@ -70,12 +72,12 @@ function Login() {
             </div>
 
             <div className="d-flex gap-3">
-                <button className="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" onClick={(e)=>validateLogin(e)}>Login</button>
-                <button className="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" onClick={()=>validateSignUp()}>Sign Up</button>
-                <button className="btn btn-lg btn-danger btn-login text-uppercase fw-bold mb-2" onClick={(e)=>validatereset(e)}>Forget Password</button>
+                <Button className="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" onClick={(e)=>validateLogin(e)}>Login</Button>
+                <Button className="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" onClick={()=>validateSignUp()}>Sign Up</Button>
+                <Button className="btn btn-lg btn-danger btn-login text-uppercase fw-bold mb-2" onClick={(e)=>validatereset(e)}>Forget Password</Button>
             </div>
 
-            </form>            
+            </Form>            
     </div>
   </div>
 </div>
